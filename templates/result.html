@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles.css') }}">
+	<style>
+	
+	body { background-color:#555888; font-family:sans-serif; color:#fff; text-align:center }
+	code { display:inline-block; max-width:600px;  padding:80px 0 0; line-height:1.5; font-family:monospace; color:#ccc }
+
+	.sc-gauge  { width:200px; height:200px; margin:200px auto; }
+	.sc-background { position:relative; height:100px; margin-bottom:10px; background-color:#fff; border-radius:150px 150px 0 0; overflow:hidden; text-align:center; }
+	.sc-mask { position:absolute; top:20px; right:20px; left:20px; height:80px; background-color:#555888; border-radius:150px 150px 0 0 }
+
+	.sc-percentage { transform:rotate({{pred*180}}deg); transform-origin:top center; }
+	.sc-min { float:left; }
+	.sc-max { float:right; }
+	.sc-value { position:absolute; top:50%; left:0; width:100%;  font-size:35px; font-weight:700 }
+	{% if label == 0%}
+	.sc-percentage { position:absolute; top:100px; left:-200%; width:400%; height:400%; margin-left:100px; background-color:#ef3000; }
+	{% elif label == 1%}
+	.sc-percentage { position:absolute; top:100px; left:-200%; width:400%; height:400%; margin-left:100px; background-color:#00aeef; }
+	{% endif %}
+
+	</style>
+	
+</head>
+<body>
+
+	<header>
+		<div class="container">
+
+		<h1>Humor Detector</h1>
+		
+	</div>
+	</header>
+
+	<h4 ><b>Results for Input: </b></h3>
+	<h3>"{{data}}"</h2>
+	<div class="results">
+
+
+	<h5 text-align="center">Probability of humor detected for the given Input msg: {{pred}}</h5>	
+	{% if label == 0%}
+	<h2 style="color:red;">Not Funny!</h2>
+	{% elif label == 1%}
+	<h2 style="color:rgb(255, 187, 0);">Funny!</h2>
+	{% endif %}
+	
+
+	</div>
+	<div class="sc-gauge">
+		<div class="sc-background">
+		  <div class="sc-percentage"></div>
+		  <div class="sc-mask"></div>
+		  <span class="sc-value">{{pred}}</span>
+		</div>
+		<span class="sc-min">0</span>
+		<span class="sc-max">1</span>
+	</div>
+
+</body>
+</html>
+
