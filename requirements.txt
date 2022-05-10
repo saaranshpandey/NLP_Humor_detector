@@ -4,5 +4,5 @@ gunicorn==20.1.0
 itsdangerous==2.0.1
 Jinja2==3.0.3
 MarkupSafe==2.0.1
-tensorflow>=2.6.2
+tensorflow-cpu
 Werkzeug==2.0.3
