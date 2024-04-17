@@ -1,6 +1,6 @@
 contractions==0.1.72
 Flask==2.0.3
-gunicorn==20.1.0
+gunicorn==22.0.0
 itsdangerous==2.0.1
 Jinja2==3.0.3
 MarkupSafe==2.0.1
